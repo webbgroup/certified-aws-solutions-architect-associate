@@ -98,7 +98,18 @@
 - Use case for NLBs: NLBs are used for extreme performance in case of TCP or UDP traffic (example: video games)
 - Instances behind an NLB don't see traffic coming from the load balancer, they see traffic as it was coming from the outside world => no security group is attached to LB => security group attached to the target EC2 instance should be changed to allow traffic from the outside (example: 0.0.0.0/0, on port 80)
 
-## Stickiness
+### Gateway Load Balancers (GLB)
+
+- Deploy, scale and manage a fleet of 3rd Party network virtual appliances in AWS
+- Example: Firewalls, Intrusion Detection and Prevention Systems, Deep Packet Inspect, payload manipulation
+
+- Operates at Layer 3 (Network Layer) - IP Packets
+- Combines the following functions:
+    - Transparent Network Gateway - single entrance/exit for all traffic
+    - Load Balancer - distributes to a pool of of virtual appliances
+- Uses the GENEVE protocol on port 6081
+
+## Stickiness (Session Affinity)
 
 - It is possible to implement stickiness in case of CLB and ALB load balancers
 - Stickiness means that the traffic from the same client will be forwarded to the same target instance

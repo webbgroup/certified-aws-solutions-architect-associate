@@ -17,7 +17,7 @@
 - Performance mode (can be set at EFS creation time)
     - General purpose (default): recommended for latency-sensitive use cases: web server, CMS, etc.
     - Max I/O - higher latency, throughput, highly parallel, recommended for big data, media processing
-- Storage tiers: lifecycle manage feature
+- Storage tiers: life-cycle manage feature
     - Standard: for frequently accessed files
     - Infrequent access (EFS-IA): there is a cost to retrieve files, lower price per storage
 

@@ -6,6 +6,65 @@
     - Distributing load across multiple machines (ELB)
     - Scaling the services using an auto-scaling group (ASG)
 
+## Sizing and Compute Options
+* OS: Linux, Windows and MacOSX
+* How much compute options.
+
+EC2 Instance Types
+
+F1 - Field Programmable Gate Array ++ Genomics research, financial analytics, real-time video processing, big data
+I3 - High Speed Storage ++ NoSQL DB's, Data Warehousing, etc.
+G4 - Graphics Intensive ++ Video Encoding/3D Application Streaming
+H1 - High Disk Throughput ++ MapReduse-based workloads, distributed file systems such as HDFS and MapR-FS
+T4g - Lowest Cost, General Purpose ++ Web Servers/Small DB's
+D2 - Dense Storage ++ FileServers/Data Warehousing/Hadoop
+R6g - Memory Optimized * RAM ++ Memory Intensive Apps/ DB's
+M6g - Main General Purpose ++ Application Servers
+C6g - Compute Optimized ++ CPU Intensive Apps/DB's
+P3 - Processing Graphics General Purpose GPU ++ Machine Learning, Bit Coin Mining, etc
+X1e - Memory Optimized ++ SAP HANA/Apache Spark, etc
+Z1D - High compute capacity and a high memory foot print ++ Ideal for electronic design automation EDA and certain relational database workloads with high per-core licensing costs.
+A1 - Arm-based workloads ++ Scale out workloads such as web servers
+U-12TB1 - Bare Metal * UTILITY ++ Bare metal capabilities that eliminate virtualization overhead.
+
+m5.2xlarge
+
+m: instance class
+5: generation (AWS improves them over time)
+2xlarge: size within the instance class
+
+Handy website for pricing: https://instances.vantage.sh/
+
+### General Purpose: T2 Free Tier
+ - General web services
+
+### Compute Optimized
+* Batch Workloads
+* Media Transcoding
+* High performance Web Servers
+* High Performance Computing
+* Scientific Modeling or Machine Learning
+* Dedicated Gaming Servers
+
+### Memory Optimized
+* Fast performance for large workloads
+* Use Cases:
+    * High Performance,relational/non-relational databases
+    * Distributed web scale cache stores
+    * In-memory databases optimized for BI (Business Intelligence)
+    * Applications performing real-time processing of big unstructured data
+
+### Storage Optimized
+ * Great for storage-intensive tasks that require high, sequential read and write access to large data sets on local storage
+ * Use Cases:
+    * High frequency online transaction processing (OLTP) systems
+    * Relational and NoSQL databases
+    * Cache for in-memory databases (like Redis)
+    * Data warehousing applications
+    * Distributed File Systems (Hadoop)
+    *
+
+
 ## Introduction to Security Groups (SG)
 
 - Security Groups are the fundamental of networking security in AWS
@@ -35,7 +94,7 @@
 - With Elastic IP address, we can mask the failure of an instance by  rapidly remapping the address to another instance 
 - AWS provides a limited number of 5 Elastic IPs (soft limit)
 - Overall it is recommended to avoid using Elastic IP, because:
-    - They often reflect pool arhcitectural decisions
+    - They often reflect pool architectural decisions
     - Instead, us e a random public IP and register a DNS name to it
 
 ## EC2 User Data
@@ -66,9 +125,20 @@
 - Hast the higher cost but it does not require upfront payment
 - Recommended for short-term and uninterrupted workloads, when we can't predict how the application will behave
 
+
+#### EC2 Hotel Analogy
+
+* On Demand - coming and staying in resort, whenever we like, we pay the full price
+* Reserved - like planning ahead and if we stay for a long time, we get a good discount
+* Savings Plan - pay a certain amount per hour for certain period and stay in any room type.
+* Spot Instances - hotel allows for people to bid on open rooms. Highest bidder keeps the room. Others get kicked out.
+* Dedicated Hosts - you pay for the entire building at the resort.
+* Capacity Reservations - you book a room for a period with full price even if you don't stay there.
+
+
 ### EC2 Reserved Instances
 
-- Up to 75% discount compared to On-demand
+- Up to 72% discount compared to On-demand
 - Pay upfront for a given time, implies long term commitment
 - Reserved period can be 1 or 3 years
 - We can reserve a specific instance type
@@ -192,8 +262,8 @@
 
 - Sometimes we want to control how the EC2 instances are placed in the AWS infrastructure
 - When we create a placement group, we can specify one of the following placement strategies:
-    - **Cluster** - cluster instances into a low-latency group in a single AZ
-    - **Spread** - spread instances across underlying hardware (max 7 instances per group per AZ)
+    - **Cluster** - cluster instances into a low-latency group in a single AZ (Affinity-Rules)
+    - **Spread** - spread instances across underlying hardware (max 7 instances per group per AZ) (Anti-Affinity Rules)
     - **Partition** - spread instances across many different partitions (which rely on different sets of racks) within an AZ. Scale to 100s of EC2 instances per group (Hadoop, Cassandra, Kafka)
 
 ### Placement Groups - Cluster
