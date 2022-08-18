@@ -18,7 +18,7 @@
 
 ## DNS Records TTL (Time to Live)
 
-- TTL a is way for web browser adn clients to cache the response of the DNS query
+- TTL a is way for web browser and clients to cache the response of the DNS query
 - Reason for caching is not to overload the DNS
 - The client will cache the DNS response for the duration of the TTL value (duration value is seconds)
 - High TTL (24 hours):

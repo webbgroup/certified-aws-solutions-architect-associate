@@ -18,7 +18,7 @@
         - Multi AZ setup
         - Maintenance windows for upgrades
         - Scaling capability (vertical and horizontal)
-        - Storage backed by EBS (GP2 or IO)
+        - Storage backed by EBS (GP2 or IO1)
 - Disadvantages:
     - No SSH into the instance which hosts the database
 
@@ -26,7 +26,7 @@
 
 - Backups are automatically enabled in RDS
 - AWS RDS provides automated backups:
-    - Daily fill backup of the database (during the maintenance window)
+    - Daily full backup of the database (during the maintenance window)
     - Transaction logs are backed-up by RDS every 5 minutes which provides the ability to do point in time restores
     - There is a 7 day retention for the backups which can be increased to 35 days
 - DB Snapshots:
@@ -34,12 +34,23 @@
     - Retention can be as long as the user wants
     - Helpful for retaining the state of the database for longer period of time
 
+## RDS Auto Scaling
+    - Helps you increase storage on your RDS DB instance dynamically
+    - When RDS detects you are running out of free database storage, it scales automatically
+    - Avoid manually scaling your database
+    - Automatically modify storage if:
+        * Free storage is less than 10% of allocated storage
+        * Low-storage last at least 5 minutes
+        * 6 hours have passed since last modification
+    - Useful for applications with unpredictable workloads
+    - Supports all RDS database engines (MariaDB, MySQL, PostGreSQL, SQL Server, Oracle)
+
 ## RDS Read Replicas
 
 - Read replicas helps to scale the read operations
 - We can create up to 5 read replicas
 - These replicas can be within AZ, cross AZ or in different regions
-- The data between the main database and the read replicas is replicated **asynchronously** => reads are eventually consistent
+- The data between the main database and the read replicas is replicated **asynchronously** (Eventual Consistency) => reads are eventually consistent
 - Read replicas can be promoted into their own database
 - Use case for read replicas:
     - Production database is up and running taking on normal load
@@ -53,11 +64,20 @@
 
 ## RDS Multi AZ (Disaster Recovery)
 
-- RDS Multi AZ replication is done using **synchronous** replication
+- RDS Multi AZ replication is done using **synchronous** (Constant Consistency) replication
 - In case of multi AZ configuration we get one DNS name
 - In case of the main database goes down, the traffic is automatically re-routed to the failover database
 - Multi AZ is not used for scaling
-- The read replicas can be set up as Multi AZ for Disaster Recovery
+- The Read Replicas can be set up as Multi AZ for Disaster Recovery
+
+### RDS - From Single AZ to Multi AZ
+- Zero downtime Operation (No need to stop the DB)
+- Just click on "modify" for the database
+- Following happens internally:
+    * A snapshot is taken
+    * A new DB is restored in the AZ
+    * Synchronization is established between the two databases
+
 
 ## RDS Security
 
