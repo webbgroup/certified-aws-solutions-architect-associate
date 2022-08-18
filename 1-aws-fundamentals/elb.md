@@ -88,6 +88,9 @@
 - ALBs also provide a fixed hostname (same as CLBs): XXX.region.elb.amazonaws.com
 - The application servers behind the LB can not see the IP of the client who accessing them directly, but they can retrieve for **X-Forwarded-For** header. The port can be fetched from **X-Forwarded-Port** and the protocol from **X-Forwarded-Proto**
 
+- SESSION cookies reserved by Amazon: AWSALB, AWSALBAPP, AWSALBTG
+
+
 ### Network Load Balancers (NLB)
 
 - Network load balancers (layer 4) allow to:
@@ -121,7 +124,7 @@ stickiness period
 ## Cross-Zone Load Balancing
 
 - With Cross-Zone Load Balancing enabled each LB instance distributes traffic evenly across multiple AZs
-- Otherwise, ech LB node distributes requests evenly only in the AZ where it is registered
+- Otherwise, each LB node distributes requests evenly only in the AZ where it is registered
 - Classic Load Balancer: 
     - Cross-zone load balancing is disabled by default
     - No additional charges for cross zone load balancing if the feature is enabled
@@ -134,7 +137,7 @@ stickiness period
 
 ## SSL/TLS Certificates
 
-- An SSL certificate allows traffic to be encrypted between the clients and the load balancers. This ia called encryption in transit or in-flight encryption
+- An SSL certificate allows traffic to be encrypted between the clients and the load balancers. This is called encryption in transit or in-flight encryption
 - SSL - Secure Socket Layer
 - TLS (newer version of SSL) - Transport Layer Security
 - Nowadays TLS are mainly used, but we are still referring to it as SSL

@@ -34,7 +34,7 @@
 
 - It is possible to define "better" auto scaling rules managed directly by EC2 instances, for example:
     - Target Average CPU Usage
-    - Number of requests on teh ELB per instance
+    - Number of requests on the ELB per instance
     - Average Network In/Out
 - These rules are easier to set up and to reason about then the previous ones
 
