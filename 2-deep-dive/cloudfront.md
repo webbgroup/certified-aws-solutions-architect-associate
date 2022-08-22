@@ -47,7 +47,7 @@
     - Trusted signers (which AWS accounts can create a signed URL)
 - Signed URL time to live:
     - For shared content (movie, music) we should make it short
-    - Fro private content we can mae it last longer
+    - For private content we can make it last longer
 - Signed URL: we can get access to individual files
 - Signed Cookies: we can get access to multiple files
 
@@ -62,3 +62,23 @@
     - It issues requests as the person whe pre-signed the URL
     - It uses the IAM key of the signing IAM principal
     - It has a limited lifetime
+
+## CloudFront Pricing
+
+- CloudFront Edge Locations are all around the world
+- The cost of data per edge location varies
+
+- Can reduce the amount of edge locations for cost reduction
+- Three price classes:
+    * Price Class All
+    * Price Class 200
+    * Price Class 100
+
+## Cloud Front Field Level Encryption
+* Protects user sensitive information through application stack
+* Adds an additional layer of security along with HTTPS
+* Sensitive information encrypted at the edge close to user
+* Uses asymmetric encryption
+Usage:
+    * Specify set of fields in POST requests that you want to be encrypted (up to 10 fields)
+

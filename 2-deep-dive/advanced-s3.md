@@ -34,7 +34,7 @@
         - Used for: log aggregation, live replication between production and test accounts
 - In both cases the buckets can be in separate accounts
 - Copying between replica buckets happens asynchronously (it is very quick)
-- In order to be ably to copy between replicas, an IAM permission has to be assigned to the source bucket
+- In order to be able to copy between replicas, an IAM permission has to be assigned to the source bucket
 
 ### Replication Notes
 
@@ -55,10 +55,10 @@
 - Amazon S3 Standard-General Purpose
 - Amazon S3 Standard-Infrequent Access (IA)
 - Amazon S3 One Zone-Infrequent Access
-- Amazon S3 Intelligent Tiering
-- Amazon Glacier
+- Amazon Glacier Instant Retrieval
+- Amazon Glacier Flexible Retrieval
 - Amazon Glacier Deep Archive
-- AmazonS3 Reduced Redundancy Storage (deprecated)
+- Amazon S3 Intelligent Tiering
 
 ### S3 Standard - General Purpose
 
@@ -67,11 +67,15 @@
 - 99.99% availability per year
 - It can sustain 2 concurrent facility failures
 
+USE Cases; Big Data analytics, mobile and gaming applications, content distribution
+
 ### S3 Standard - Infrequent Access
 
 - Suitable for data that is less frequently accessed, but it should be retrieved quickly when it is needed
 - Same durability as General Purpose, 99.9% availability
 - Lower cost than General Purpose
+
+USE Cases: Disaster Recovery, backups
 
 ### S3 One Zone - Infrequent Access
 
@@ -79,6 +83,8 @@
 - Same durability as Standard IA. Data can be lost if an AZ goes down
 - 99.5% availability per year
 - Lower cost than IA
+
+USE Cases: Storing Secondary backup copies of on-premise data, or data you can recreate
 
 ### S3 One Zone - Intelligent Tiering
 
@@ -100,6 +106,14 @@
     - Bulk (5 to 12 hours)
 - Minimum storage duration for Glacier is 90 days
 
+### S3 Glacier Instant Retrieval
+- Millisecond retrieval, great for data access once a quarter
+- Minimum storage duration of 90 days
+
+### S3 Glacier Flexible Retrieval
+- Expedited (1-5 minutes), standard (3-5 hours), Bulk (5-12 hours) -- free
+- Minimum Storage duration of 90 days
+
 ### S3 Glacier Deep Archive
 
 - For very long term storage - cheaper than S3 Glacier
@@ -107,6 +121,17 @@
     - Standard (12 hours)
     - Bulk (48 hours)
 - Minimum storage duration is 180 days
+
+### S3 Intelligent Tiering
+- Small monthly monitoring and auto-tiering fee
+- Moves objects automatically between Access Tiers based on usage
+- No Retrieval charges in S3-Intelligent Tiering
+
+* Frequent tier - default tier
+* Infrequent tier - objects not accessed for 30 days
+* Archive Instant Access - objects not accessed for 90 days
+* Archive Access tier - objects not accessed for 90-700+ days
+* Deep Archive Access tier - 180-700+ days
 
 ## S3 - Moving between storage classes
 
@@ -150,6 +175,11 @@
 - Can be used to retrieve less data using SQL queries to do server side filtering
 - We can filter by rows and columns. SQL statements should be simple, we can not have joins
 - The purpose of S3 Select is to use less network traffic
+
+## S3 Event Notifications and Event Bridge
+- Advanced filtering options JSON rules: metadata, object size, name
+- Multiple Destinations - Step Functions Kenisis Streams Firehose
+- Event Bridge Capabilities - Archive, Replay Events, Reliable Delivery
 
 ## AWS Athena
 

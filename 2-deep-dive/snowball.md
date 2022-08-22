@@ -13,7 +13,7 @@
 1. Request a snowball device from AWS console for delivery
 2. Install the snowball client on the local server
 3. Connect the snowball device to the server and copy the files over using the client
-4. Shipt back the device when the all the necessary data is transferred to the device
+4. Ship back the device when the all the necessary data is transferred to the device
 5. The data from the Snowball will be loaded into an S3 bucket
 6. Snowball is completely wiped
 
@@ -28,13 +28,22 @@
 - It is useful for pre-processing data while it is moving
 - Use cases: data migration, image collation, IoT capture, machine learning
 
+## Snowcone
+- Small portable computing, anywhere, rugged and secure, withstands harsh environments
+- Light 4.5 pounds
+- Device used for edge computing, storage, and data transfer
+- 8TB of usable storage
+- Need to use your own cables and battery
+- Can be sent back to AWS offline, or connect to the Internet and AWS DataSync
+
 ## Snowmobile
 
 - It is truck which can transfer exabytes of data
-- Each Snowmobile has 100PT of data storage capacity
+- Each Snowmobile has 100PB of data storage capacity
 - Better than Snowball if more than 10PB of data should be transferred
+- High Security: temperature controlled, GPS, 24/7
 
 ## Snowball into Glacier
 
 - Snowball can not import data directly to Glacier
-- We have to use Amazon S3 first, adn an S3 lifecycle policy
+- We have to use Amazon S3 first, and an S3 lifecycle policy
