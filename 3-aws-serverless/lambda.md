@@ -36,7 +36,7 @@
 - It supports a lot of programming languages
 - Easy monitoring through AWS CloudWatch
 - Easy to get more resources per functions (up to 3GB or RAM)
-- Increasing the RAm will also increase the CPU and network
+- Increasing the RAM will also increase the CPU and network
 - Supported languages:
     - NodeJS (JavaScript)
     - Python
@@ -46,6 +46,9 @@
     - Ruby
     - Custom Runtime API (community supported, example Rust)
 - **Docker does not run on AWS Lambda!**
+- Lambda Container Image
+    * The container image must implement the Lambda Runtime API
+    * ECS / Fargate is preferred for running arbitrary Docker images
 
 ## AWS Lambda Integrations
 
@@ -81,15 +84,16 @@
     - Concurrent executions: 1000 per account (can be increased after a request)
 - Deployment:
     - Lambda function deployment size (compressed.zip): 50 MB
-    - Uncrompressed deployment size: 250 MB
+    - Uncompressed deployment size: 250 MB
     - We can use `/tmp` directory to load other files at the startup
+    - Size of environment variables 4KB
 
 ## AWS Lambda@Edge
 
 - Used for running global Lambda functions alongside edge locations (for CDN for example)
 - Can be used for:
     - To change CLoudFront requests and responses:
-        - After CloudFront receives a request from a  viewer (viewer request)
+        - After CloudFront receives a request from a viewer (viewer request)
         - Before CloudFront receives the request from the origin (origin request)
         - After CloudFront receives the response from the origin (origin response)
         - Before CloudFront forwards the response to the viewer (viewer response)

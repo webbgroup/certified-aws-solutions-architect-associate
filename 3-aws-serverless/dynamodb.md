@@ -21,6 +21,21 @@
     - Document types: list, map
     - Set types: string set, number set, binary set
 
+## DynamoDB Read/Write Capacity Modes
+
+- Control how you manage your tables capacity (read/write throughput)
+
+* Provisioned Mode (default)
+    - You specify the number of reads/writes per second
+    - You need to plan capacity beforehand
+    - Pay for provisioned Read Capacity Units (RCU) & Write Capacity Units (WRU)
+    - Possibility to add auto-scaling mode for RCU and WCU
+* On-Demand Mode
+    - Reads/Writes scale automatically up/down with your workloads
+    - No capacity planning needed
+    - Pay for what you use, more expensive
+    - Great for unpredictable workloads
+
 ## Provisioned Throughput
 
 - Table must have a provisioned throughput, we must provision read and write capacity units
@@ -45,6 +60,8 @@
 - The cache is multi AZ (3 nodes minimum recommended for production)
 - It is secure (Encryption at rest with KMC, VPC, IAM, CloudTrail)
 
+Use it primarily for DB Caches, vs Elasticache for storage of the Aggregated Result Set
+
 ## DynamoDB Streams
 
 - Changes in DynamoDB (Create, Update, Delete) can end up in a DynamoDB stream - change log of everything happened in the table
@@ -56,16 +73,15 @@
 - We can implement cross region replication using Stream
 - Streams has 24 hours of data retention
 
-## DynamoDB - New Features
+## DynamoDB Global Tables
+* Make DynamoDB table accessible with low-latency in multiple-regions
+* Active-Active replication
+* Applications can READ and WRITE to the table of any region
+* Must enable DynamoDB Streams as a pre-requisite
 
-- Transactions
-    - All or nothing type of operations
-    - We can coordinate insert, update and delete operations across multiple tables
-    - Include up to 10 unique items or up to 4MB of data per transaction
-- On-demand
-    - No capacity planning needed (WCU/RCU) - scales automatically
-    - It is 2.5x more expensive than provisioned capacity
-    - Helpful for spikes and unpredictable loads or if the application has a very low throughput
+## DynamoDB TTL
+* Automatically delete entries after an expiry timestamp;
+* Use cases; reduced storage data by keeping only current items, adhere to regulatory guidelines
 
 ## Security
 

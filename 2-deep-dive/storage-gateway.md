@@ -27,7 +27,7 @@
 ### Volume Gateway
 
 - Block storage using iSCSI protocol backed by S3
-- EBS snapshots are created time to time which are stored in S3, these will help use to restore un-premise volumes
+- EBS snapshots are created time to time which are stored in S3, these will help use to restore on-premise volumes
 - Cached volumes: low latency access to the most recently used data
 - Stored volumes: entire dataset is on premise, scheduled buckets are stored in S3
 - Volumes are usually mounter using iSCSI protocol, for on-premise it will look like a local volume
@@ -50,3 +50,14 @@
 - File access / NFS => File Gateway (backed by S3)
 - Volumes / Block Storage / iSCSI => Volume Gateway (backed by S3 with EBS snapshots)
 - VTL Tape solution / Backup with iSCSI => Tape Gateway (backed by S3 and Glacier)
+
+#### Storage Comparison
+- S3: Object Storage
+- Glacier: Object Archival
+- EFS: Network File System for Linux, POSIX filesystem
+- FSx for Windows: Network File System for Windows
+- FSx for Luster: High Performance Computing Linux file system
+- EBS volumes: Network Storage for one EC2 instance at a time
+- Instance STorage: Physical Storage for your EC2 instance (high IOPS, but if instance goes down, you lose the storage instantly)
+- Storage Gateway: File Gateway, Volume Gateway (cached and stored), Tape Gateway
+- Snowball/Snowmobile: to move large amount of data to the cloud, physically

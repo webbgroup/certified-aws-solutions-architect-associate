@@ -59,6 +59,9 @@
 - Store, manage and deploy container in AWS
 - Fully integrated with IAM and ECS
 - Data is sent over HTTPS and encrypted at rest
+- Private and Public repository (Amazon ECR Public Gallery)
+- Fully integrated with ECS, backed by Amazon S3
+- Access is controlled through IAM (permission errors => policy)
 
 ## Amazon EKS
 
@@ -67,3 +70,4 @@
 - Kubernetes is an open-source system for automatic deployment, scaling and management of containerized applications
 - It is an alternative to ECS having a different API
 - EKS supports EC2 if we want to deploy worker nodes or Fargate to deploy serverless containers
+- Kubernetes is cloud agnostic (can be used in any cloud - Azure, GCP...)

@@ -71,18 +71,29 @@
 - If the MaximumReceives threshold is exceeded, the message is sent to a dead letter queue
 - DLQs are useful for debugging
 - We have to make sure the messages are processed in DLQ before expiring. It is not a good idea to set a short expiration time for the DLQ
+- Use ReDrive to reintroduce the event back into the SQS queue, and SQS won't know it is an old message.
 
 ## Delay Queue
 
 - Delaying a message means the consumers wont be able to see the message for a period of time after it was sent. Delay time can be up to 15 minutes
-- Delay can be set at a queue level or tt also can be set to message level using the **DelaySeconds** parameter
+- Default is 0 seconds
+- Can set a default at queue level
+- Can override the default at queue level
+- Can override the default on send using the **DelaySeconds** parameter
+
+## SQS Long Polling
+- When a consumer requests messages from the queue, it can optimally "wait" for messages to arrive if there are none in queue
+- This is called Long Polling
+- The wait time can be 1 sec to 20 sec
+- Long polling is preferred to short polling
+- Long polling can be enabled at the queue level or at the API level using WaitTimeSeconds
 
 ## FIFO Queues
 
 - FIFO - First In First Out
 - The messages will be ordered in the queue, meaning that the messages will be consumed in the same order as they were sent
 - FIFO queues have limited throughput: 300 msg/s without batching, 3000 msg/s with batching
-- Exactly-once send capability (by activating content-based deduplication)
+- Exactly-once send capability (by activating content-based de-duplication)
 - The name of the FIFO queue must end with the `.fifo`
 
 ## SQS With Auto Scaling Group

@@ -6,4 +6,4 @@
 - Amazon MQ is basically managed Apache ActiveMQ
 - Amazon MQ does not scale as much as SQS/SNS
 - It runs on a dedicated machine, can urn in HA with failover
-- It has both queue anf topic features
+- It has both queue and topic features
