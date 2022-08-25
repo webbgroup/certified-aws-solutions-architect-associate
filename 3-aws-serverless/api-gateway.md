@@ -67,7 +67,7 @@
     - Great for 3rd party tokens
     - Very flexible in terms of what IAM policy is returned
     - Handles authentication + authorization
-    - We pay per lambda invocation
+    - We pay per Lambda invocation
 - Cognito User Pools
     - We manage our own user pool, which can be backed by Facebook, Google login, etc.
     - There is no need to write custom code

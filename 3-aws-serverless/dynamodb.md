@@ -83,6 +83,14 @@ Use it primarily for DB Caches, vs Elasticache for storage of the Aggregated Res
 * Automatically delete entries after an expiry timestamp;
 * Use cases; reduced storage data by keeping only current items, adhere to regulatory guidelines
 
+## DyanmoDB Indexes
+* Global Secondary Indexes & Local Secondary Indexes
+* Allow to query on other columns than the primary key
+
+## DynamoDB Transactions
+* Allows two tables to be written to with one transaction.
+ \- Updating a AccountBalance Table in addition to BankTransactions
+
 ## Security
 
 - We get VPC endpoints to access DynamoDB without internet

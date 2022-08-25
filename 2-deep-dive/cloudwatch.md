@@ -120,10 +120,10 @@
 - After an instance recovery we will have the same private, public, elastic IP, same metadata and placement group
 - Any data stored on an instance store will not be kept
 
-## AWS CloudWatch Events
+## AWS EventBridge (Formerly CloudWatch Events)
 
-- CloudWatch events can be:
+- Event Bridge events can be:
     - Scheduled: cron job
     - Event pattern: event rules to react to a service doing something
-- CloudWatch events can trigger a Lambda function, or can send SQS/SNS/Kinesis messages
-- A CloudWatch event creates a small JSON document to give information about the change
+- EventBridge can trigger a Lambda function, or can send SQS/SNS/Kinesis messages
+- An EventBridge event creates a small JSON document to give information about the change

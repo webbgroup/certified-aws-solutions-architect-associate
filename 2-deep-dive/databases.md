@@ -3,7 +3,7 @@
 ## Choosing the Right Database
 
 - There are several databases on AWS from which we can choose from
-- Guid line questions to be able to select the best database for the product:
+- Guide line questions to be able to select the best database for the product:
     - Is the workload read-heavy, write-heavy or balanced? What are the throughput needs? Will the throughput change, will fluctuate or will we have to scale the DB over time?
     - How much data do we store and for how long? Will the size of the data grow? What is the average size of an object in the DB? How frequently are these objects accessed?
     - Data durability: should the data be stored for a week or forever? Is the database going to be a source of truth?
@@ -15,7 +15,7 @@
 ## Database Types on AWS
 
 - RDBMS (SQL/OLTP): RDS, Aurora - great for joins and normalized data
-- NoSQL: DynamoDB, ElastiCache (key/value pairs), Neptune (graphs), DocumentDB (json) - no joins, no SQL
+- NoSQL: DynamoDB, ElastiCache (key/value pairs), Neptune (graphs), DocumentDB (JSON) - no joins, no SQL
 - Object Store: S3 (for big objects) / Glacier (for backups, archive)
 - Data Warehouse (SQL Analytics / BI): Redshift (OLAP), Athena
 - Search: ElasticSearch (JSON) - free text, unstructured searches
@@ -181,6 +181,13 @@
 - Performance: 10x performance vs other data warehousing, compression
 - Cost: pay per node provisioned, 1/10th of the cost of other warehouses
 
+### Glue
+- Used for ETLS
+- Writes Metadata
+- Writes to Amazon Athena
+- Amazon Redshift Spectrum
+- Amazon EMR
+
 ## Neptune
 
 - Fully managed graph database
@@ -200,7 +207,7 @@
 - Performance: best suited for graphs, clustering can improve performance
 - Cost: similar for RDS, per per node provisioned
 
-## ElasticSearch
+## OpenSearch - successor to ElasticSearch
 
 - Open source technology
 - With ElasticSearch we can search any field, we can have partial matches as well
@@ -208,7 +215,7 @@
 - We can provision a cluster of instances
 - Built-in integration with: Amazon Kinesis Data Firehose, AWS IoT and Amazon CloudWatch Logs for data ingestion
 - Security through Cognito and IAM, KMS encryption, SSL and VPC
-- Comes with Kibana and Logstahs - ELK stack
+- Comes with Kibana and Logstash - ELK stack
 
 ### ElasticSearch for Solutions Architects
 
@@ -217,3 +224,5 @@
 - Reliability: Multi AZ, clustering
 - Performance: based on ElasticSearch project, petabyte scale
 - Cost: similar for RDS, per per node provisioned
+
+OpenSearch = Indexing and Searches

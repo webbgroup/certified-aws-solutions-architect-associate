@@ -22,3 +22,5 @@
 2. Define which principals can access this IAM Role
 3. Use AWS STS to retrieve credentials and impersonate the IAM Role you have access to (AssumeRole API)
 4. Temporary credentials will be valid for 15 minutes up to 1 hour
+
+## Basically for BreakGlass Elevated Privileges

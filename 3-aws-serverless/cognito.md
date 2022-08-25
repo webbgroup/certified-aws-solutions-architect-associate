@@ -1,6 +1,6 @@
 # AWS Cognito
 
-- Cognito is used for givin users an identity in oder to being able to communicate with a system
+- Cognito is used for giving users an identity in order to being able to communicate with a system
 - Cognito offers 3 products:
     - **Cognito User Pools:**
         - Sign in functionality for the app users
@@ -12,10 +12,10 @@
         - Used for synchronize data from a device to Cognito
         - Deprecated, replaced by AppSync
 
-## AWS Cognito User Pools
+## AWS Cognito User Pools (CUP)
 
 - It is a serverless database for users of an application
-- it is a simple login provider: username (or email) / password combination
+- It is a simple login provider: username (or email) / password combination
 - Possibility to verify emails/phone numbers and add MFA
 - Can enable Federated Identities (Facebook, Google, SAML, etc.). **This is not the same CIP (AWS Federated Identity)!**
 - Sends back a JSON Web Token (JWT)
